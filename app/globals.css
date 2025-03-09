@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  --purple: #b7c5f5;
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -13,19 +14,30 @@
 
 @layer base {
   button {
-    @apply cursor-pointer transition duration-200 linear;
+    @apply cursor-pointer transition duration-200 ease-in-out;
   }
 }
 
-@media (prefers-color-scheme: dark) {
+.light {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-overpass);
+  transition: 0.3s linear;
 }

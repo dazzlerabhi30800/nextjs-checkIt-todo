@@ -16,6 +16,8 @@ interface context {
   setUser: React.Dispatch<SetStateAction<userType | null>>;
   getUser(): Promise<void>;
   handleLogout: () => Promise<void>;
+  theme: string;
+  setTheme: React.Dispatch<SetStateAction<string>>;
 }
 
 const context = createContext<context>({
@@ -23,12 +25,24 @@ const context = createContext<context>({
   setUser: (user) => user,
   async getUser() {},
   async handleLogout() {},
+  theme: "dark",
+  setTheme: (theme) => theme,
 });
 
 export default function ContextProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<userType>(
     JSON.parse(window.localStorage.getItem("user") || "null")
   );
+  const [theme, setTheme] = useState<string>(
+    window.localStorage.getItem("theme") || "dark"
+  );
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.classList.remove("dark", "light");
+    root.classList.add(theme);
+    window.localStorage.setItem("theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     getUser();
@@ -49,7 +63,9 @@ export default function ContextProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <context.Provider value={{ user, setUser, getUser, handleLogout }}>
+    <context.Provider
+      value={{ user, setUser, getUser, handleLogout, theme, setTheme }}
+    >
       {children}
     </context.Provider>
   );

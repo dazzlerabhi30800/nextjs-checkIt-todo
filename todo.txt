@@ -1,4 +1,6 @@
 
-1 -> Design Header
-2 -> Implement Toggle Dark/Light Mode.
-3 -> Design Task Page
+1 X -> Design Header
+2 X -> Authentication - Google Auth & Logout
+3 X -> Implement Toggle Dark/Light Mode.
+4 -> Change favicon to custom Logo 
+5 -> Design Task Page

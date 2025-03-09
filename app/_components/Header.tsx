@@ -23,7 +23,7 @@ const Header = () => {
     <header className="py-4 px-8 flex justify-between items-center">
       <h1 className="font-bold text-xl">Logo</h1>
       {/* INFO  & Theme Switcher Comp */}
-      <div className="flex justify-center items-center gap-8">
+      <div className="flex justify-center items-center gap-6">
         {user && (
           <div ref={ref} className="relative">
             <button onClick={() => setShowOptions((prev) => !prev)}>

@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Overpass } from "next/font/google";
+import { Inter, Overpass } from "next/font/google";
 import "./globals.css";
 import Provider from "./Provider";
 import Header from "./_components/Header";
 
 const overpass = Overpass({
   variable: "--font-overpass",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  weight: "800",
   subsets: ["latin"],
 });
 
@@ -21,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${overpass.variable} antialiased`}>
+      <body className={`${overpass.variable} ${inter.variable} antialiased`}>
         <Provider>
           <Header />
           {children}

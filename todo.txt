@@ -3,4 +3,6 @@
 2 X -> Authentication - Google Auth & Logout
 3 X -> Implement Toggle Dark/Light Mode.
 4 X -> Change favicon to custom Logo 
-5 -> Design Task Page
+5 X -> Task Input ( Task Page )
+6 X -> Design Task Comp 
+7 -> Design new logo for header

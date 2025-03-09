@@ -12,9 +12,16 @@
   --font-sans: var(--font-overpass);
 }
 
+@theme {
+  --font-inter: var(--font-inter);
+}
+
 @layer base {
   button {
     @apply cursor-pointer transition duration-200 ease-in-out;
+  }
+  input::placeholder {
+    @apply text-gray-500;
   }
 }
 
@@ -28,9 +35,43 @@
   --foreground: #ededed;
 }
 
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-overpass);
   transition: 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.task--heading {
+  background: linear-gradient(
+    to right,
+    rgb(241, 90, 191),
+    rgb(92, 243, 235),
+    rgb(71, 186, 240),
+    #f75f9e
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: colorAnim 10s linear infinite;
+  transition: 0.3s linear;
+}
+
+@keyframes colorAnim {
+  0% {
+    background-position: 0;
+  }
+
+  50% {
+    background-position: 50vh;
+  }
+
+  100% {
+    background-position: 100vh;
+  }
 }

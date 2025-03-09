@@ -32,16 +32,14 @@ const TaskInput = () => {
       ])
       .select("*");
     if (data) {
-      console.log(data);
       setTasks([...tasks, { ...data[0] }]);
-      console.log(tasks);
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
     <div className="flex flex-col w-full max-w-2xl  items-center">
-      <h1 className="mx-auto text-3xl md:text-[3.5rem] font-bold font-(family-name:--font-inter) task--heading">
+      <h1 className="mx-auto text-[2.5rem] md:text-[3.5rem] font-bold font-(family-name:--font-inter) task--heading">
         Check It
       </h1>
       <form
@@ -54,19 +52,16 @@ const TaskInput = () => {
           type="text"
           id="task--input"
           placeholder="Add your task"
-          className="flex-1 w-full py-3 px-4 focus:outline-none border-2 border-slate-700 border-r-0 rounded-l-md"
+          className="flex-1 w-full py-2 px-4 md:py-3 md:px-6 focus:outline-none border-2 border-slate-700 border-r-0 rounded-l-md"
         />
         <button
           disabled={loading}
-          className="bg-teal-500 group text-white py-3 px-6 text-lg hover:brightness-125 rounded-r-sm disabled:opacity-90 disabled:cursor-not-allowed"
+          className="bg-teal-500 group text-white py-2 px-4 md:py-3 md:px-6 text-lg hover:brightness-125 rounded-r-sm disabled:opacity-90 disabled:cursor-not-allowed"
         >
           {loading ? (
             <Loader2Icon className="animate-spin" />
           ) : (
-            <SendIcon
-              className="-translate-x-1 group-hover:-translate-y-1 group-hover:translate-x-1 transition duration-200 ease-in"
-              size={25}
-            />
+            <SendIcon className="-translate-x-1 group-hover:-translate-y-1 group-hover:translate-x-1 transition duration-200 ease-in w-5 h-5 md:h-6 md:w-6" />
           )}
         </button>
       </form>

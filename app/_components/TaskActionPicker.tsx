@@ -1,14 +1,24 @@
 import { useStoreContext } from "@/context/store";
+import { supabase } from "@/utils/supabase/client";
 import { Ellipsis, Pencil, Trash2 } from "lucide-react";
 import React, { useEffect, useReducer, useRef, useState } from "react";
 
-const TaskActionPicker = () => {
+const TaskActionPicker = ({ id }: { id: string }) => {
   const ref = useRef<null | HTMLDivElement>(null);
   const [showAction, setShowAction] = useState(false);
-  const { theme } = useStoreContext();
+  const { theme, setTasks } = useStoreContext();
 
   const handleClick = (e: MouseEvent) => {
     if (ref.current && !ref.current.contains(e.target as Node)) {
+      console.log("hello");
+      setShowAction(false);
+    }
+  };
+
+  const deleteTask = async (id: string) => {
+    const { error } = await supabase.from("Tasks").delete().eq("id", id);
+    if (!error) {
+      setTasks((prev) => prev.filter((item) => item.id !== id));
       setShowAction(false);
     }
   };
@@ -26,17 +36,20 @@ const TaskActionPicker = () => {
         }`}
         onClick={() => setShowAction((prev) => !prev)}
       >
-        <Ellipsis size={30} />
+        <Ellipsis size={25} />
       </button>
       {/* Action Wrapper */}
       <div
         className={`border-1 ${
           theme === "dark" ? "border-slate-500" : "border-stone-700"
-        } flex items-center gap-5 py-3  absolute top-8 rounded-md -translate-x-1/2 left-1/2 w-24 ${
-          showAction ? "opacity-100" : "opacity-0"
-        } transition duration-200 linear justify-center bg-black`}
+        } items-center gap-5 py-3  absolute top-8 rounded-md -translate-x-1/2 left-1/2 w-24 ${
+          showAction ? "z-10 flex" : "hidden"
+        } transition duration-200 linear justify-center bg-gray-800`}
       >
-        <button className="text-red-400 hover:text-red-700">
+        <button
+          onClick={() => deleteTask(id)}
+          className="text-red-400 hover:text-red-700"
+        >
           <Trash2 size={22} />
         </button>
         <button className="text-green-400 hover:text-green-700">

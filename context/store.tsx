@@ -57,9 +57,12 @@ export default function ContextProvider({ children }: { children: ReactNode }) {
     const { data } = await supabase.auth.getSession();
     if (data.session) {
       setUser(data.session.user.user_metadata);
-      window.localStorage.setItem("user", JSON.stringify(user));
     }
   }
+
+  useEffect(() => {
+    window.localStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();

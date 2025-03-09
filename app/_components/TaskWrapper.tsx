@@ -27,10 +27,10 @@ const TaskWrapper = () => {
     getTasks();
   }, [user]);
   return (
-    <div className="flex flex-col gap-1 w-full max-w-2xl">
+    <div className="flex flex-col gap-1 w-full max-w-2xl pb-10">
       {!loading ? (
         tasks?.map((task: task, index: number) => (
-          <TaskComp key={index} task={task} />
+          <TaskComp key={index} index={index} task={task} />
         ))
       ) : (
         <span className="mx-auto">

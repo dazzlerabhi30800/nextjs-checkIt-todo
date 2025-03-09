@@ -5,4 +5,5 @@
 4 X -> Change favicon to custom Logo 
 5 X -> Task Input ( Task Page )
 6 X -> Design Task Comp 
-7 -> Design new logo for header
+7 X -> Add Delete & Edit functionality 
+8 -> Design new logo for header

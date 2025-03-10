@@ -1,9 +1,14 @@
 import { useStoreContext } from "@/context/store";
 import { supabase } from "@/utils/supabase/client";
 import { Ellipsis, Pencil, Trash2 } from "lucide-react";
-import React, { useEffect, useReducer, useRef, useState } from "react";
+import React, { SetStateAction, useEffect, useRef, useState } from "react";
 
-const TaskActionPicker = ({ id }: { id: string }) => {
+interface actionPicker {
+  id: string;
+  setEdit: React.Dispatch<SetStateAction<boolean>>;
+}
+
+const TaskActionPicker = ({ id, setEdit }: actionPicker) => {
   const ref = useRef<null | HTMLDivElement>(null);
   const [showAction, setShowAction] = useState(false);
   const { theme, setTasks } = useStoreContext();
@@ -52,7 +57,10 @@ const TaskActionPicker = ({ id }: { id: string }) => {
         >
           <Trash2 size={22} />
         </button>
-        <button className="text-green-400 hover:text-green-700">
+        <button
+          onClick={() => setEdit(true)}
+          className="text-green-400 hover:text-green-700"
+        >
           <Pencil size={22} />
         </button>
       </div>

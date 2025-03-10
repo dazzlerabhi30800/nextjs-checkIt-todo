@@ -34,6 +34,7 @@ const TaskInput = () => {
     if (data) {
       setTasks([...tasks, { ...data[0] }]);
       setLoading(false);
+      inputRef.current.value = "";
     }
   };
 

@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <header className="py-4 px-4  md:px-8 flex justify-between items-center">
-      <img src="./logo-header.svg" className="w-10 h-10" alt="" />
+      <img src="./logo-header.svg" className="w-8 h-8" alt="Check It" />
       {/* INFO  & Theme Switcher Comp */}
       <div className="flex justify-center items-center gap-3 md:gap-6">
         {user && (

@@ -1,7 +1,7 @@
 import { useStoreContext } from "@/context/store";
 import { task } from "@/type";
 import { CheckIcon } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { FormEvent, useEffect, useRef, useState } from "react";
 import TaskActionPicker from "./TaskActionPicker";
 import { supabase } from "@/utils/supabase/client";
 
@@ -31,6 +31,23 @@ const TaskComp = ({ task, index }: { task: task; index: number }) => {
     }
   };
 
+  // function update task
+  const updateTask = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (editString === task.task) {
+      setEdit(false);
+    } else {
+      task.task = editString;
+      await supabase
+        .from("Tasks")
+        .update({
+          task: editString,
+        })
+        .eq("id", task.id);
+      setEdit(false);
+    }
+  };
+
   const taskRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
@@ -43,7 +60,7 @@ const TaskComp = ({ task, index }: { task: task; index: number }) => {
     <div
       ref={taskRef}
       className={`pt-2 pb-1 w-full flex items-center gap-10 ${
-        task.completed && "scale-[0.9] opacity-70"
+        task.completed && "scale-[0.92] opacity-70"
       } transition duration-200 linear border-b border-slate-600`}
     >
       {/* Checkbox &&  Edit Todo */}
@@ -70,16 +87,24 @@ const TaskComp = ({ task, index }: { task: task; index: number }) => {
               {task.task}
             </h3>
           ) : (
-            <form className="flex-1 flex w-full justify-between">
+            <form
+              onSubmit={updateTask}
+              className="flex-1 flex w-full justify-between"
+            >
+              <label
+                htmlFor={`task--edit--${task.id}`}
+                className="hidden"
+              ></label>
               <input
                 type="text"
-                id="task--edit"
-                value={task.task}
+                id={`task--edit--${task.id}`}
+                value={editString}
                 onChange={(e) => setEditString(e.target.value)}
                 className="bg-stone-800 flex-1 w-full focus:outline-none  py-1 px-2"
               />
               <button
-                disabled={task.task === editString || editString.length === 0}
+                type="submit"
+                disabled={editString.length === 0}
                 className="py-1 px-2 bg-teal-600 disable:cursor-not-allowed disabled:opacity-90"
               >
                 <CheckIcon />
@@ -88,7 +113,9 @@ const TaskComp = ({ task, index }: { task: task; index: number }) => {
           )}
         </div>
       </div>
-      <TaskActionPicker id={task.id} />
+      {!task.completed && !edit && (
+        <TaskActionPicker setEdit={setEdit} id={task.id} />
+      )}
     </div>
   );
 };

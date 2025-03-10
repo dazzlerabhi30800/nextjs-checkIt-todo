@@ -15,7 +15,6 @@ const TaskActionPicker = ({ id, setEdit }: actionPicker) => {
 
   const handleClick = (e: MouseEvent) => {
     if (ref.current && !ref.current.contains(e.target as Node)) {
-      console.log("hello");
       setShowAction(false);
     }
   };

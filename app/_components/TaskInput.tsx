@@ -1,7 +1,7 @@
 "use client";
 import { useStoreContext } from "@/context/store";
 import { supabase } from "@/utils/supabase/client";
-import { Loader2Icon, SendIcon, ShowerHead } from "lucide-react";
+import { Loader2Icon, SendIcon } from "lucide-react";
 import React, { FormEvent, useRef, useState } from "react";
 
 const TaskInput = () => {
@@ -28,6 +28,7 @@ const TaskInput = () => {
           task: inputRef.current.value,
           completed: false,
           createdBy: user?.email,
+          position: tasks.length + 1,
         },
       ])
       .select("*");

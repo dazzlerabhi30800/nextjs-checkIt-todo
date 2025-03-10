@@ -6,4 +6,5 @@
 5 X -> Task Input ( Task Page )
 6 X -> Design Task Comp 
 7 X -> Add Delete & Edit functionality 
-8 -> Design new logo for header
+8 X -> Design new logo for header
+9 X -> Drag & Drop Task

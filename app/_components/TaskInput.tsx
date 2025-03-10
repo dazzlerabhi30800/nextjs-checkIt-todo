@@ -70,10 +70,10 @@ const TaskInput = () => {
       {/* Error */}
       <small
         className={`mt-3 ${
-          error ? "opacity-100" : "opacity-0"
+          error ? "opacity-100 mb-5" : "opacity-0 mb-0"
         } transition duration-300 ml-1 linear text-red-400 self-start text-base font-semibold`}
       >
-        Input can't be empty!
+        Input can&apos;t be empty!
       </small>
     </div>
   );

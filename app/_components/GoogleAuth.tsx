@@ -18,7 +18,7 @@ const GoogleAuth = () => {
         },
       })
       .then(() => getUser())
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   }
 
   if (user) redirect("/task");

@@ -14,7 +14,7 @@
 
 @theme {
   --font-inter: var(--font-inter);
-  --font-zeyada: var(--font-zeyada);
+  --font-caveat-brush: var(--font-caveat-brush);
 }
 
 @layer base {

@@ -58,7 +58,7 @@ const TaskWrapper = () => {
   return (
     <DragDropContext onDragEnd={handleDrag}>
       <Droppable droppableId="taskWrapper">
-        {(provided, snapshot) => (
+        {(provided) => (
           <div
             className="w-full max-w-2xl"
             ref={provided.innerRef}

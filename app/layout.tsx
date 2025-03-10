@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Caveat_Brush, Inter, Overpass, Zeyada } from "next/font/google";
+import { Caveat_Brush, Inter, Overpass } from "next/font/google";
 import "./globals.css";
 import Provider from "./Provider";
 import Header from "./_components/Header";
@@ -11,7 +11,7 @@ const overpass = Overpass({
 
 const caveatBrush = Caveat_Brush({
   subsets: ["latin"],
-  variable: "--font-zeyada",
+  variable: "--font-caveat-brush",
   weight: ["400"],
 });
 

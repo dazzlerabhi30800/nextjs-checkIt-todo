@@ -16,12 +16,12 @@ const TaskInput = () => {
 
     if (!inputRef.current) return;
     if (inputRef.current && inputRef.current?.value.length === 0) {
-      setError((prev) => (prev = true));
+      setError(true);
       return;
     }
     setLoading(true);
     setError(false);
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from("Tasks")
       .insert([
         {

@@ -91,7 +91,7 @@ const TaskComp = ({ task, index }: { task: task; index: number }) => {
               <div className="flex flex-1 w-full">
                 {!edit ? (
                   <h3
-                    className={`font-(family-name:--font-zeyada) text-xl ${
+                    className={`font-(family-name:--font-caveat-brush) text-xl ${
                       theme === "dark" ? "text-slate-200" : "text-gray-900"
                     } ${task.completed && "line-through"} `}
                   >

@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useStoreContext } from "@/context/store";
 import ThemeSwitch from "./ThemeSwitch";
+import Image from "next/image";
 
 const Header = () => {
   const { user, handleLogout } = useStoreContext();
@@ -21,14 +22,22 @@ const Header = () => {
 
   return (
     <header className="py-4 px-4  md:px-8 flex justify-between items-center">
-      <img src="./logo-header.svg" className="w-8 h-8" alt="Check It" />
+      <Image
+        src="./logo-header.svg"
+        width={32}
+        height={32}
+        className="w-8 h-8"
+        alt="Check It"
+      />
       {/* INFO  & Theme Switcher Comp */}
       <div className="flex justify-center items-center gap-3 md:gap-6">
         {user && (
           <div ref={ref} className="relative">
             <button onClick={() => setShowOptions((prev) => !prev)}>
-              <img
+              <Image
                 className="w-10 h-10 border border-purple-200 object-cover rounded-[50%]"
+                width={40}
+                height={40}
                 src={user?.picture}
                 alt={user?.full_name}
               />

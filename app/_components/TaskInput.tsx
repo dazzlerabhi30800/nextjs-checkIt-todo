@@ -2,7 +2,7 @@
 import { useStoreContext } from "@/context/store";
 import { supabase } from "@/utils/supabase/client";
 import { Loader2Icon, SendIcon } from "lucide-react";
-import React, { FormEvent, useRef, useState } from "react";
+import React, { FormEvent, useEffect, useRef, useState } from "react";
 
 const TaskInput = () => {
   const [error, setError] = useState<boolean>(false);
@@ -38,6 +38,22 @@ const TaskInput = () => {
       inputRef.current.value = "";
     }
   };
+
+  // function to focus input on pressing Ctrl + /
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.key === "/") {
+        event.preventDefault(); // Prevents default browser behavior
+        inputRef?.current?.focus();
+        // Trigger your event here
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <div className="flex flex-col w-full max-w-2xl  items-center">

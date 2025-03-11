@@ -40,13 +40,13 @@ const TaskActionPicker = ({ id, setEdit }: actionPicker) => {
         }`}
         onClick={() => setShowAction((prev) => !prev)}
       >
-        <Ellipsis size={25} />
+        <Ellipsis size={20} />
       </button>
       {/* Action Wrapper */}
       <div
         className={`border-1 ${
           theme === "dark" ? "border-slate-500" : "border-stone-700"
-        } items-center gap-5 py-3  absolute top-8 rounded-md -translate-x-1/2 left-1/2 w-24 ${
+        } items-center gap-4 py-2  absolute top-6 rounded-md -translate-x-1/2 left-1/2 w-20 ${
           showAction ? "z-10 flex" : "hidden"
         } transition duration-200 linear justify-center bg-gray-800`}
       >
@@ -54,13 +54,13 @@ const TaskActionPicker = ({ id, setEdit }: actionPicker) => {
           onClick={() => deleteTask(id)}
           className="text-red-400 hover:text-red-700"
         >
-          <Trash2 size={22} />
+          <Trash2 size={18} />
         </button>
         <button
           onClick={() => setEdit(true)}
           className="text-green-400 hover:text-green-700"
         >
-          <Pencil size={22} />
+          <Pencil size={18} />
         </button>
       </div>
     </div>

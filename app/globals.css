@@ -4,6 +4,7 @@
   --purple: #b7c5f5;
   --background: #ffffff;
   --foreground: #171717;
+  --info-bg: rgb(34, 64, 70);
 }
 
 @theme inline {
@@ -29,17 +30,23 @@
 .light {
   --background: #ffffff;
   --foreground: #171717;
+  --info-bg: #dbdada;
 }
 
 .dark {
   /* --background: #181818; */
-  --background: radial-gradient(circle, rgb(5, 24, 32), rgb(5, 5, 5));
+  --background: radial-gradient(circle, #051820, rgb(5, 5, 5));
   --foreground: #ededed;
+  --info-bg: rgb(34, 64, 70);
 }
 
 html {
   width: 100%;
   overflow-x: hidden;
+}
+
+.info--container {
+  background: var(--info-bg);
 }
 
 body {

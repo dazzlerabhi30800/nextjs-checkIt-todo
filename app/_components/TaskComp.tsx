@@ -69,7 +69,7 @@ const TaskComp = ({ task, index }: { task: task; index: number }) => {
           <div
             ref={taskRef}
             className={`pt-2 pb-1 w-full flex items-center gap-10 ${
-              task.completed && "scale-[0.92] opacity-70"
+              task.completed && "opacity-60"
             } transition duration-200 linear border-b border-slate-600 ${
               snapshot.isDragging && "scale-[1.03]"
             }`}

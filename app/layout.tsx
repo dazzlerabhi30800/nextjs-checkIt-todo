@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   title: "Check It - Todo App",
   description:
     "Check it, it's a task management with minimal design & functionality",
-};
+}
 
 export default function RootLayout({
   children,

@@ -8,7 +8,7 @@ const Provider = ({ children }: { children: ReactNode }) => {
     setClient(true);
   }, []);
 
-  if (!client) return;
+  if (!client) return null;
   return (
     <div className="flex min-h-screen flex-col">
       <ContextProvider>{children}</ContextProvider>

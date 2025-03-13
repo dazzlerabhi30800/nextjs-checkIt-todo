@@ -42,10 +42,12 @@ const TaskInput = () => {
   // function to focus input on pressing Ctrl + /
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      event.preventDefault(); // Prevents default browser behavior
       if (event.ctrlKey && event.key === "/") {
-        event.preventDefault(); // Prevents default browser behavior
         inputRef?.current?.focus();
-        // Trigger your event here
+      }
+      if (event.key === "Escape") {
+        inputRef?.current?.blur();
       }
     };
 

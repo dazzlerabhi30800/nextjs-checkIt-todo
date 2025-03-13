@@ -18,14 +18,25 @@ const InfoComp = () => {
     <footer className="fixed bottom-10 right-5 flex items-center flex-col gap-5">
       {/* Info Tip */}
       {showTip && (
-        <div className="info--container backdrop-blur-md py-3 px-4 rounded-md shadow-md">
-          <p
-            className={`${
-              theme === "dark" ? "text-slate-100" : "text-stone-700"
-            } text-sm font-bold`}
-          >
-            Ctrl + / - input focus
-          </p>
+        <div className="flex flex-col gap-5">
+          <div className="info--container backdrop-blur-md py-3 px-4 rounded-md shadow-md">
+            <p
+              className={`${
+                theme === "dark" ? "text-slate-100" : "text-stone-700"
+              } text-sm font-bold`}
+            >
+              Ctrl + / - input focus
+            </p>
+          </div>
+          <div className="info--container backdrop-blur-md py-3 px-4 rounded-md shadow-md">
+            <p
+              className={`${
+                theme === "dark" ? "text-slate-100" : "text-stone-700"
+              } text-sm font-bold`}
+            >
+              Esc - Input Blur
+            </p>
+          </div>
         </div>
       )}
       {/* Info Comp */}

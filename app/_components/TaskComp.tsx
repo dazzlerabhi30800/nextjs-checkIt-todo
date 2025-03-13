@@ -125,7 +125,11 @@ const TaskComp = ({ task, index }: { task: task; index: number }) => {
                 )}
               </div>
             </div>
-            <TaskActionPicker completed={completed} setEdit={setEdit} id={task.id} />
+            <TaskActionPicker
+              completed={task.completed}
+              setEdit={setEdit}
+              id={task.id}
+            />
           </div>
         </div>
       )}

@@ -21,7 +21,7 @@ const TaskComp = ({ task, index }: { task: task; index: number }) => {
           return { ...item, completed: checked };
         }
         return item;
-      })
+      }),
     );
     const { error } = await supabase
       .from("Tasks")
@@ -108,6 +108,7 @@ const TaskComp = ({ task, index }: { task: task; index: number }) => {
                     ></label>
                     <input
                       type="text"
+                      autoFocus={edit}
                       id={`task--edit--${task.id}`}
                       value={editString}
                       onChange={(e) => setEditString(e.target.value)}

@@ -6,9 +6,10 @@ import React, { SetStateAction, useEffect, useRef, useState } from "react";
 interface actionPicker {
   id: string;
   setEdit: React.Dispatch<SetStateAction<boolean>>;
+  completed: boolean;
 }
 
-const TaskActionPicker = ({ id, setEdit }: actionPicker) => {
+const TaskActionPicker = ({ id, setEdit, completed }: actionPicker) => {
   const ref = useRef<null | HTMLDivElement>(null);
   const [showAction, setShowAction] = useState(false);
   const { theme, setTasks } = useStoreContext();
@@ -57,8 +58,9 @@ const TaskActionPicker = ({ id, setEdit }: actionPicker) => {
           <Trash2 size={18} />
         </button>
         <button
+          disabled={completed}
           onClick={() => setEdit(true)}
-          className="text-green-400 hover:text-green-700"
+          className="text-green-400 hover:text-green-700 disabled:opacity-50"
         >
           <Pencil size={18} />
         </button>

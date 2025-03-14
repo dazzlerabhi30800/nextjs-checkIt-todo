@@ -1,6 +1,5 @@
 import { userType } from "@/type";
 import { supabase } from "@/utils/supabase/client";
-import { UserMetadata } from "@supabase/supabase-js";
 import { redirect } from "next/navigation";
 import React, {
   createContext,
@@ -9,6 +8,7 @@ import React, {
   useState,
   useContext,
   useEffect,
+  useLayoutEffect,
 } from "react";
 
 interface context {
@@ -35,14 +35,14 @@ const context = createContext<context>({
 
 export default function ContextProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<userType>(
-    JSON.parse(window.localStorage.getItem("user") || "null")
+    JSON.parse(window.localStorage.getItem("user") || "null"),
   );
   const [tasks, setTasks] = useState<Array<any>>([]);
   const [theme, setTheme] = useState<string>(
-    window.localStorage.getItem("theme") || "dark"
+    window.localStorage.getItem("theme") || "dark",
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove("dark", "light");
     root.classList.add(theme);

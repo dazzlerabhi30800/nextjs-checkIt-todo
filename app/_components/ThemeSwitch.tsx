@@ -13,7 +13,7 @@ const ThemeSwitch = () => {
           theme === "dark" ? "text-purple-200" : "text-black"
         }`}
       >
-        {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+        {theme === "dark" ? <SunIcon size={30} /> : <MoonIcon size={30} />}
       </button>
     </div>
   );

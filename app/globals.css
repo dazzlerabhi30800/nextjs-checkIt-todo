@@ -28,7 +28,7 @@
 }
 
 .light {
-  --background: #ffffff;
+  --background: radial-gradient(circle, rgb(214, 213, 213), rgb(233, 233, 233));
   --foreground: #171717;
   --info-bg: #dbdada;
   --auth-form-bg: linear-gradient(

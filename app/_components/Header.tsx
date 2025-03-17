@@ -5,7 +5,7 @@ import ThemeSwitch from "./ThemeSwitch";
 import Image from "next/image";
 
 const Header = () => {
-  const { user, handleLogout } = useStoreContext();
+  const { user, handleLogout, theme } = useStoreContext();
   const [showOption, setShowOptions] = useState(false);
   const ref = useRef<null | HTMLDivElement>(null);
 
@@ -23,10 +23,10 @@ const Header = () => {
   return (
     <header className="py-4 px-4  md:px-8 flex justify-between items-center">
       <Image
-        src="./logo-header.svg"
+        src={theme === "dark" ? "./logo-header.svg" : "./logo-light.svg"}
         width={32}
         height={32}
-        className="w-8 h-8"
+        className="w-8 h-8 drop-shadow-sm"
         alt="Check It"
       />
       {/* INFO  & Theme Switcher Comp */}

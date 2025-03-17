@@ -40,7 +40,10 @@ const AuthSignUp = () => {
 
   if (user) redirect("/task");
   return (
-    <div className="flex flex-col gap-10 auth--form p-6 rounded-md w-full max-w-xl shadow-sm">
+    <div className="flex flex-col gap-10 auth--form p-6 rounded-md w-[90%] max-w-xl shadow-sm">
+      <h1 className="font-bold mb-2 ml-3 font-(family-name:--font-inter) text-xl md:text-3xl">
+        Register
+      </h1>{" "}
       <form className="flex flex-col gap-5" onSubmit={handleLogin}>
         <div>
           <label htmlFor="email" className="hidden"></label>

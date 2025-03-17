@@ -4,6 +4,7 @@ import ContextProvider from "@/context/store";
 
 const Provider = ({ children }: { children: ReactNode }) => {
   const [client, setClient] = useState(false);
+
   useEffect(() => {
     setClient(true);
   }, []);

@@ -31,6 +31,14 @@
   --background: #ffffff;
   --foreground: #171717;
   --info-bg: #dbdada;
+  --auth-form-bg: linear-gradient(
+    to left,
+    rgb(223, 248, 233),
+    rgb(230, 247, 240)
+  );
+  --auth-btn: rgb(153, 248, 196);
+  --input-focus-border: black;
+  --input-border-color: #818080;
 }
 
 .dark {
@@ -38,6 +46,10 @@
   --background: radial-gradient(circle, #051820, rgb(5, 5, 5));
   --foreground: #ededed;
   --info-bg: rgb(34, 64, 70);
+  --auth-form-bg: linear-gradient(to left, rgb(22, 39, 41), rgb(22, 46, 36));
+  --auth-btn: rgb(10, 182, 153);
+  --input-focus-border: white;
+  --input-border-color: #9c9c9c;
 }
 
 html {
@@ -54,6 +66,22 @@ body {
   color: var(--foreground);
   font-family: var(--font-overpass);
   transition: 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.auth--form {
+  background: var(--auth-form-bg);
+}
+.auth--form input {
+  width: 100%;
+  border-color: var(--input-border-color);
+}
+
+.auth--form input:focus {
+  border-color: var(--input-focus-border);
+}
+
+.auth--btn {
+  background: var(--auth-btn);
 }
 
 .task--heading {

@@ -9,20 +9,13 @@ import { Draggable } from "@hello-pangea/dnd";
 const TaskComp = ({ task, index }: { task: task; index: number }) => {
   const [editString, setEditString] = useState(task.task);
   const [edit, setEdit] = useState(false);
-  const { theme, setTasks, tasks } = useStoreContext();
+  const { theme, tasks } = useStoreContext();
   const [loading, setLoading] = useState(false);
 
   // function to toggle complete
   const toggleComplete = async (checked: boolean) => {
     setLoading(true);
-    setTasks((prev) =>
-      prev.map((item) => {
-        if (item.id === task.id) {
-          return { ...item, completed: checked };
-        }
-        return item;
-      }),
-    );
+    task.completed = checked;
     const { error } = await supabase
       .from("Tasks")
       .update({ completed: checked })

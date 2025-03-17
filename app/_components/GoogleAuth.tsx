@@ -23,11 +23,12 @@ const GoogleAuth = () => {
 
   if (user) redirect("/task");
   return (
-    <div>
+    <div className="w-full">
       {!user ? (
         <button
+          type="button"
           onClick={googleAuth}
-          className="flex items-center gap-3 py-3 px-6 rounded-md bg-slate-300 text-lg text-black font-semibold hover:brightness-110 cursor-pointer"
+          className="flex items-center gap-3 py-3 px-6 rounded-md bg-slate-300 text-lg text-black font-semibold hover:brightness-110 cursor-pointer w-full justify-center shadow-md"
         >
           <img src="./google.svg" alt="google" className="w-7 h-7" />
           Google Sign In
@@ -35,7 +36,7 @@ const GoogleAuth = () => {
       ) : (
         <button
           onClick={handleLogout}
-          className="flex items-center gap-3 py-3 px-6 rounded-md bg-teal-500 text-lg text-white font-semibold hover:brightness-110 cursor-pointer"
+          className="flex items-center gap-3 py-3 px-6 rounded-md bg-teal-500 text-lg text-white font-semibold hover:brightness-110 cursor-pointer shadow-md"
         >
           Logout
         </button>

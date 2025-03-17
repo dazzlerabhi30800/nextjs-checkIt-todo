@@ -54,6 +54,7 @@ export default function ContextProvider({ children }: { children: ReactNode }) {
   }, []);
 
   async function getUser() {
+    if (user) return;
     const { data } = await supabase.auth.getSession();
     if (data.session) {
       setUser(data.session.user.user_metadata);

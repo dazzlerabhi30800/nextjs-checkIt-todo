@@ -34,13 +34,21 @@ const Header = () => {
         {user && (
           <div ref={ref} className="relative">
             <button onClick={() => setShowOptions((prev) => !prev)}>
-              <Image
-                className="w-10 h-10 border border-purple-200 object-cover rounded-[50%]"
-                width={40}
-                height={40}
-                src={user?.picture}
-                alt={user?.full_name}
-              />
+              {user.picture ? (
+                <Image
+                  className="w-10 h-10 border border-purple-200 object-cover rounded-[50%]"
+                  width={40}
+                  height={40}
+                  src={user?.picture}
+                  alt={user?.full_name}
+                />
+              ) : (
+                <img
+                  src="https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659652_640.png"
+                  className="w-10 h-10 border border-purple-200 object-cover rounded-[50%]"
+                  alt={user?.email}
+                />
+              )}
             </button>
             <div
               className={`flex absolute left-1/2 -translate-x-1/2 top-12 flex-col min-w-20 rounded-md border-2 border-slate-500 ${
@@ -48,7 +56,7 @@ const Header = () => {
               } transition duration-150 ease-in-out`}
             >
               <h2 className="border-b text-center border-slate-500 text-sm py-1 px-5">
-                {user.name.split(" ")[0]}
+                {user.name ? user.name.split(" ")[0] : user.email}
               </h2>
               {/* Option */}
               <button

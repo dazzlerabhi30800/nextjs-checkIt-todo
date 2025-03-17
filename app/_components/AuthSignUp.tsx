@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import React, { FormEvent, useState } from "react";
 
 const AuthSignUp = () => {
-  const { theme } = useStoreContext();
+  const { theme, setUser } = useStoreContext();
 
   const [showPass, setShowPass] = useState(false);
   const [emailVal, setEmailVal] = useState("");
@@ -28,11 +28,17 @@ const AuthSignUp = () => {
     const { data, error } = await supabase.auth.signUp({
       email: emailVal,
       password: passVal,
+      options: {
+        data: {
+          display_name: "Abhishek Choudhary",
+        },
+      },
     });
     if (error) {
       console.log(error);
     }
     if (data && !error) {
+      setUser(data?.user?.user_metadata);
       redirect("/task");
     }
   };

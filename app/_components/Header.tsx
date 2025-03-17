@@ -60,7 +60,10 @@ const Header = () => {
               </h2>
               {/* Option */}
               <button
-                onClick={handleLogout}
+                onClick={() => {
+                  handleLogout();
+                  setShowOptions(false);
+                }}
                 className="w-full py-1 px-5 text-sm  bg-transparent hover:text-purple-400"
               >
                 Logout

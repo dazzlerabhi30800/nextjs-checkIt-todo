@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import React, { FormEvent, useState } from "react";
 
 const AuthLogin = ({ children }: { children: React.ReactNode }) => {
-  const { theme, user } = useStoreContext();
+  const { theme, user, setUser } = useStoreContext();
 
   const [emailVal, setEmailVal] = useState("");
   const [passVal, setPassVal] = useState("");
@@ -34,6 +34,7 @@ const AuthLogin = ({ children }: { children: React.ReactNode }) => {
       console.log(error);
     }
     if (data && !error) {
+      setUser(data.user.user_metadata);
       redirect("/task");
     }
   };

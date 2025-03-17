@@ -68,6 +68,7 @@ export default function ContextProvider({ children }: { children: ReactNode }) {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setUser(null);
+    setTasks([]);
     redirect("/");
   };
 

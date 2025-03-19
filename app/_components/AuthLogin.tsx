@@ -5,9 +5,10 @@ import { EyeClosedIcon, EyeIcon } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React, { FormEvent, useState } from "react";
+import AuthHOC from "./AuthHOC";
 
 const AuthLogin = ({ children }: { children: React.ReactNode }) => {
-  const { theme, user, setUser } = useStoreContext();
+  const { theme, setUser } = useStoreContext();
 
   const [emailVal, setEmailVal] = useState("");
   const [passVal, setPassVal] = useState("");
@@ -39,7 +40,6 @@ const AuthLogin = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  if (user) redirect("/task");
   return (
     <div className="flex flex-col gap-10 auth--form p-6 rounded-md w-[90%] max-w-xl">
       <h1 className="font-bold mb-2 ml-3 font-(family-name:--font-inter) text-xl md:text-3xl">
@@ -93,4 +93,4 @@ const AuthLogin = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default AuthLogin;
+export default AuthHOC(AuthLogin);

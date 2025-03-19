@@ -5,6 +5,7 @@ import { EyeClosedIcon, EyeIcon } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React, { FormEvent, useState } from "react";
+import AuthHOC from "./AuthHOC";
 
 const AuthSignUp = () => {
   const { theme, setUser } = useStoreContext();
@@ -42,9 +43,7 @@ const AuthSignUp = () => {
       redirect("/task");
     }
   };
-  const { user } = useStoreContext();
 
-  if (user) redirect("/task");
   return (
     <div className="flex flex-col gap-10 auth--form p-6 rounded-md w-[90%] max-w-xl shadow-sm">
       <h1 className="font-bold mb-2 ml-3 font-(family-name:--font-inter) text-xl md:text-3xl">
@@ -102,4 +101,4 @@ const AuthSignUp = () => {
   );
 };
 
-export default AuthSignUp;
+export default AuthHOC(AuthSignUp);

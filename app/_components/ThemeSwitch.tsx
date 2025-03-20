@@ -1,14 +1,17 @@
-import { useStoreContext } from "@/context/store";
+import { todoStore } from "@/context/StoreSlice";
 import { MoonIcon, SunIcon } from "lucide-react";
-import React from "react";
+import React, { useLayoutEffect } from "react";
 
 const ThemeSwitch = () => {
-  const { theme, setTheme } = useStoreContext();
+  const { theme, setTheme } = todoStore((state) => state);
+  useLayoutEffect(() => {
+    setTheme(theme);
+  }, []);
   return (
     <div>
       {/* Sun Icon */}
       <button
-        onClick={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))}
+        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         className={`text-lg ${
           theme === "dark" ? "text-purple-200" : "text-black"
         }`}

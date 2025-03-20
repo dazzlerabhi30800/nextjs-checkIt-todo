@@ -1,10 +1,10 @@
 "use client";
-import { useStoreContext } from "@/context/store";
+import { todoStore } from "@/context/StoreSlice";
 import { InfoIcon } from "lucide-react";
 import React, { useState } from "react";
 
 const InfoComp = () => {
-  const { theme } = useStoreContext();
+  const { theme } = todoStore((state) => state);
   const [showTip, setShowTip] = useState(false);
   const handleTip = () => {
     if (showTip) return;

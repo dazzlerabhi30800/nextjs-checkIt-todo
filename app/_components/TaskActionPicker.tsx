@@ -1,4 +1,4 @@
-import { useStoreContext } from "@/context/store";
+import { todoStore } from "@/context/StoreSlice";
 import { supabase } from "@/utils/supabase/client";
 import { Ellipsis, Pencil, Trash2 } from "lucide-react";
 import React, { SetStateAction, useEffect, useRef, useState } from "react";
@@ -12,7 +12,7 @@ interface actionPicker {
 const TaskActionPicker = ({ id, setEdit, completed }: actionPicker) => {
   const ref = useRef<null | HTMLDivElement>(null);
   const [showAction, setShowAction] = useState(false);
-  const { theme, setTasks } = useStoreContext();
+  const { theme, setTasks, tasks } = todoStore((state) => state);
 
   const handleClick = (e: MouseEvent) => {
     if (ref.current && !ref.current.contains(e.target as Node)) {
@@ -23,7 +23,7 @@ const TaskActionPicker = ({ id, setEdit, completed }: actionPicker) => {
   const deleteTask = async (id: string) => {
     const { error } = await supabase.from("Tasks").delete().eq("id", id);
     if (!error) {
-      setTasks((prev) => prev.filter((item) => item.id !== id));
+      setTasks(tasks.filter((item) => item.id !== id));
       setShowAction(false);
     }
   };

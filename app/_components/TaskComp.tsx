@@ -1,15 +1,15 @@
-import { useStoreContext } from "@/context/store";
 import { task } from "@/type";
 import { CheckIcon } from "lucide-react";
 import React, { FormEvent, useEffect, useRef, useState } from "react";
 import TaskActionPicker from "./TaskActionPicker";
 import { supabase } from "@/utils/supabase/client";
 import { Draggable } from "@hello-pangea/dnd";
+import { todoStore } from "@/context/StoreSlice";
 
 const TaskComp = ({ task, index }: { task: task; index: number }) => {
   const [editString, setEditString] = useState(task.task);
   const [edit, setEdit] = useState(false);
-  const { theme, tasks } = useStoreContext();
+  const { theme, tasks } = todoStore(state => state);
   const [loading, setLoading] = useState(false);
 
   // function to toggle complete

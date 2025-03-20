@@ -1,5 +1,5 @@
 "use client";
-import { useStoreContext } from "@/context/store";
+import { todoStore } from "@/context/StoreSlice";
 import { supabase } from "@/utils/supabase/client";
 import { Loader2Icon, SendIcon } from "lucide-react";
 import React, { FormEvent, useEffect, useRef, useState } from "react";
@@ -8,7 +8,7 @@ const TaskInput = () => {
   const [error, setError] = useState<boolean>(false);
   const inputRef = useRef<null | HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);
-  const { setTasks, user, tasks } = useStoreContext();
+  const { setTasks, user, tasks } = todoStore((state) => state);
 
   // function to add todo
   const handleAddTask = async (e: FormEvent<HTMLFormElement>) => {

@@ -1,11 +1,11 @@
 "use client";
-import { useStoreContext } from "@/context/store";
+import { todoStore } from "@/context/StoreSlice";
 import { supabase } from "@/utils/supabase/client";
 import { redirect } from "next/navigation";
 import React from "react";
 
 const GoogleAuth = () => {
-  const { user, getUser, handleLogout } = useStoreContext();
+  const { user, getUser, handleLogout } = todoStore((state) => state);
 
   // NOTE:  Handle Google SignIn
   async function googleAuth() {

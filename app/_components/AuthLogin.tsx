@@ -1,14 +1,14 @@
 "use client";
-import { useStoreContext } from "@/context/store";
 import { supabase } from "@/utils/supabase/client";
 import { EyeClosedIcon, EyeIcon } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React, { FormEvent, useState } from "react";
 import AuthHOC from "./AuthHOC";
+import { todoStore } from "@/context/StoreSlice";
 
 const AuthLogin = ({ children }: { children: React.ReactNode }) => {
-  const { theme, setUser } = useStoreContext();
+  const { theme, setUser } = todoStore((state) => state);
 
   const [emailVal, setEmailVal] = useState("");
   const [passVal, setPassVal] = useState("");

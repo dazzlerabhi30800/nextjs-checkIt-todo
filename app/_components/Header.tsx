@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { useStoreContext } from "@/context/store";
 import ThemeSwitch from "./ThemeSwitch";
 import Image from "next/image";
+import { todoStore } from "@/context/StoreSlice";
 
 const Header = () => {
-  const { user, handleLogout, theme } = useStoreContext();
+  const { user, handleLogout, theme } = todoStore((state) => state);
   const [showOption, setShowOptions] = useState(false);
   const ref = useRef<null | HTMLDivElement>(null);
 
@@ -26,6 +26,7 @@ const Header = () => {
         src={theme === "dark" ? "./logo-header.svg" : "./logo-light.svg"}
         width={32}
         height={32}
+        priority={true}
         className="w-8 h-8 drop-shadow-sm"
         alt="Check It"
       />

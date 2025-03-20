@@ -1,14 +1,14 @@
 "use client";
-import { useStoreContext } from "@/context/store";
 import { task } from "@/type";
 import { supabase } from "@/utils/supabase/client";
 import React, { useEffect, useState } from "react";
 import TaskComp from "./TaskComp";
 import { Loader2Icon } from "lucide-react";
 import { DragDropContext, Droppable, DropResult } from "@hello-pangea/dnd";
+import { todoStore } from "@/context/StoreSlice";
 
 const TaskWrapper = () => {
-  const { tasks, setTasks, user } = useStoreContext();
+  const { tasks, setTasks, user } = todoStore((state) => state);
   const [loading, setLoading] = useState(false);
 
   // function to fetch tasks

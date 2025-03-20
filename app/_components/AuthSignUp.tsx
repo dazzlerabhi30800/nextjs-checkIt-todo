@@ -11,6 +11,7 @@ const AuthSignUp = () => {
   const { theme, setUser } = todoStore((state) => state);
 
   const [showPass, setShowPass] = useState(false);
+  const [name, setName] = useState("");
   const [emailVal, setEmailVal] = useState("");
   const [passVal, setPassVal] = useState("");
 
@@ -21,6 +22,7 @@ const AuthSignUp = () => {
       alert("email is not valid");
       return;
     }
+    if (!name.length) return;
     if (passVal.length < 4) {
       alert("password must be greater than 4");
       return;
@@ -31,7 +33,7 @@ const AuthSignUp = () => {
       password: passVal,
       options: {
         data: {
-          display_name: "Abhishek Choudhary",
+          display_name: name,
         },
       },
     });
@@ -50,6 +52,18 @@ const AuthSignUp = () => {
         Register
       </h1>{" "}
       <form className="flex flex-col gap-5" onSubmit={handleLogin}>
+        <div>
+          <label htmlFor="username" className="hidden"></label>
+          <input
+            type="text"
+            name="username"
+            value={name}
+            placeholder="username"
+            id="username"
+            onChange={(e) => setName(e.target.value)}
+            className="py-3 px-6 border rounded-md focus:outline-none"
+          />
+        </div>
         <div>
           <label htmlFor="email" className="hidden"></label>
           <input

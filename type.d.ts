@@ -9,3 +9,13 @@ interface task {
 }
 
 type userType = UserMetadata | null | undefined;
+
+interface toast {
+  id: number;
+  message: string;
+  type?: string;
+}
+
+interface toastState {
+  toasts: Array<toast>;
+}

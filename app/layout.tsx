@@ -3,6 +3,8 @@ import { Caveat_Brush, Inter, Overpass } from "next/font/google";
 import "./globals.css";
 import Provider from "./Provider";
 import Header from "./_components/Header";
+import Toast from "./_components/toast/Toast";
+import ToastContainer from "./_components/toast/ToastContainer";
 
 const overpass = Overpass({
   variable: "--font-overpass",

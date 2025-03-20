@@ -9,7 +9,7 @@ const GoogleAuth = () => {
 
   // NOTE:  Handle Google SignIn
   async function googleAuth() {
-    await supabase.auth
+    const data = await supabase.auth
       .signInWithOAuth({
         provider: "google",
         options: {
@@ -17,7 +17,9 @@ const GoogleAuth = () => {
             "https://rlfmxthyvtdqwqgsktil.supabase.co/auth/v1/callback",
         },
       })
-      .then(() => getUser())
+      .then(() => {
+        getUser();
+      })
       .catch((err) => console.error(err));
   }
 

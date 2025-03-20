@@ -3,11 +3,13 @@ import React, { useEffect, useRef, useState } from "react";
 import ThemeSwitch from "./ThemeSwitch";
 import Image from "next/image";
 import { todoStore } from "@/context/StoreSlice";
+import { useToast } from "@/context/ToastContext";
 
 const Header = () => {
   const { user, handleLogout, theme } = todoStore((state) => state);
   const [showOption, setShowOptions] = useState(false);
   const ref = useRef<null | HTMLDivElement>(null);
+  const { value: toast } = useToast();
 
   const checkClick = (e: MouseEvent) => {
     if (ref.current && !ref.current.contains(e.target as Node)) {
@@ -64,6 +66,7 @@ const Header = () => {
                 onClick={() => {
                   handleLogout();
                   setShowOptions(false);
+                  toast.success("successfully logged out");
                 }}
                 className="w-full py-1 px-5 text-sm  bg-transparent hover:text-purple-400"
               >

@@ -1,5 +1,6 @@
 "use client";
 import { todoStore } from "@/context/StoreSlice";
+import { useToast } from "@/context/ToastContext";
 import { supabase } from "@/utils/supabase/client";
 import { Loader2Icon, SendIcon } from "lucide-react";
 import React, { FormEvent, useEffect, useRef, useState } from "react";
@@ -8,6 +9,7 @@ const TaskInput = () => {
   const [error, setError] = useState<boolean>(false);
   const inputRef = useRef<null | HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);
+  const { value: toast } = useToast();
   const { setTasks, user, tasks } = todoStore((state) => state);
 
   // function to add todo
@@ -35,6 +37,7 @@ const TaskInput = () => {
     if (data) {
       setTasks([...tasks, { ...data[0] }]);
       setLoading(false);
+      toast.success("todo added");
       inputRef.current.value = "";
     }
   };

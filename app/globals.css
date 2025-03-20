@@ -99,6 +99,11 @@ body {
   transition: 0.3s linear;
 }
 
+.toast--notification {
+  animation: slide 0.3s linear forwards;
+  animation-delay: 3s;
+}
+
 @keyframes colorAnim {
   0% {
     background-position: 0;
@@ -110,5 +115,16 @@ body {
 
   100% {
     background-position: 100vh;
+  }
+}
+
+@keyframes slide {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(200px);
   }
 }

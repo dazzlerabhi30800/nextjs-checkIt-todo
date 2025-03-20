@@ -6,9 +6,11 @@ import { redirect } from "next/navigation";
 import React, { FormEvent, useState } from "react";
 import AuthHOC from "./AuthHOC";
 import { todoStore } from "@/context/StoreSlice";
+import { useToast } from "@/context/ToastContext";
 
 const AuthSignUp = () => {
   const { theme, setUser } = todoStore((state) => state);
+  const { value: toast } = useToast();
 
   const [showPass, setShowPass] = useState(false);
   const [name, setName] = useState("");
@@ -19,12 +21,15 @@ const AuthSignUp = () => {
     e.preventDefault();
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailVal.match(emailRegex)) {
-      alert("email is not valid");
+      toast.error("email is not valid");
       return;
     }
-    if (!name.length) return;
+    if (!name.length) {
+      toast.error("please provide valid username");
+      return;
+    }
     if (passVal.length < 4) {
-      alert("password must be greater than 4");
+      toast.error("password must be greater than 4");
       return;
     }
     // if(email.match)
@@ -38,10 +43,11 @@ const AuthSignUp = () => {
       },
     });
     if (error) {
-      console.log(error);
+      toast.error(error.message);
     }
     if (data && !error) {
       setUser(data?.user?.user_metadata);
+      toast.info(`welcome back ${data?.user?.user_metadata.display_name}`);
       redirect("/task");
     }
   };

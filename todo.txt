@@ -9,5 +9,6 @@
 8 X -> Design new logo for header
 9 X -> Drag & Drop Task
 
-10 -> Form for login
-11 -> Login using email & password
+10 X -> Form for login
+11 X -> Login using email & password
+12 -> Toast Notification without library

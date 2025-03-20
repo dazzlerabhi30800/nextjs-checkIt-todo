@@ -54,6 +54,6 @@ export const todoStore = create<slice>()(
         tasks: state.tasks,
         theme: state.theme,
       }),
-    },
-  ),
+    }
+  )
 );

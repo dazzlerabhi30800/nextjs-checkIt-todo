@@ -4,6 +4,7 @@ import ThemeSwitch from "./ThemeSwitch";
 import Image from "next/image";
 import { todoStore } from "@/context/StoreSlice";
 import { useToast } from "@/context/ToastContext";
+import { redirect } from "next/navigation";
 
 const Header = () => {
   const { user, handleLogout, theme } = todoStore((state) => state);
@@ -63,10 +64,13 @@ const Header = () => {
               </h2>
               {/* Option */}
               <button
-                onClick={() => {
-                  handleLogout();
-                  setShowOptions(false);
-                  toast.success("successfully logged out");
+                onClick={async () => {
+                  const isOk = await handleLogout();
+                  if (isOk) {
+                    setShowOptions(false);
+                    toast.success("successfully logged out");
+                    redirect("/");
+                  }
                 }}
                 className="w-full py-1 px-5 text-sm  bg-transparent hover:text-purple-400"
               >

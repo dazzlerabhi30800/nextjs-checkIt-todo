@@ -1,7 +1,6 @@
 import { userType } from "@/type";
 import { create } from "zustand";
 import { supabase } from "@/utils/supabase/client";
-import { redirect } from "next/navigation";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 interface slice {
@@ -9,7 +8,7 @@ interface slice {
   getUser: () => Promise<void>;
   tasks: Array<any>;
   theme: string;
-  handleLogout: () => Promise<void>;
+  handleLogout: () => Promise<boolean>;
   setTheme: (theme: string) => void;
   setTasks: (tasks: Array<any>) => void;
   setUser: (userInfo: userType) => void;
@@ -34,7 +33,7 @@ export const todoStore = create<slice>()(
       handleLogout: async () => {
         await supabase.auth.signOut();
         set({ user: null, tasks: [] });
-        redirect("/");
+        return true;
       },
       setTheme: (theme) => {
         set({ theme });
@@ -54,6 +53,6 @@ export const todoStore = create<slice>()(
         tasks: state.tasks,
         theme: state.theme,
       }),
-    }
-  )
+    },
+  ),
 );

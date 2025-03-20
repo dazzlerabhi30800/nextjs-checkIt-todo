@@ -2,12 +2,11 @@
 import { todoStore } from "@/context/StoreSlice";
 import React, { ReactNode, useEffect, useState } from "react";
 import ToastContainer from "./_components/toast/ToastContainer";
-import ToastContextProvider, { useToast } from "@/context/ToastContext";
+import ToastContextProvider from "@/context/ToastContext";
 
 const Provider = ({ children }: { children: ReactNode }) => {
   const [client, setClient] = useState(false);
   const { getUser } = todoStore((state) => state);
-  const { toasts } = useToast();
 
   useEffect(() => {
     setClient(true);

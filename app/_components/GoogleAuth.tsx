@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 const GoogleAuth = () => {
-  const { user, getUser, handleLogout } = todoStore((state) => state);
+  const { user, handleLogout } = todoStore((state) => state);
 
   // NOTE:  Handle Google SignIn
   async function googleAuth() {
@@ -16,9 +16,6 @@ const GoogleAuth = () => {
           redirectTo:
             "https://rlfmxthyvtdqwqgsktil.supabase.co/auth/v1/callback",
         },
-      })
-      .then(() => {
-        getUser();
       })
       .catch((err) => console.error(err));
   }
